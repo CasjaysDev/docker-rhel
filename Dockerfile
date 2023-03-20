@@ -3,7 +3,6 @@ ARG LICENSE="MIT"
 ARG IMAGE_NAME="rhel"
 ARG LANGUAGE="en_US.UTF-8"
 ARG TIMEZONE="America/New_York"
-ARG EXPOSE_PORTS=""
 
 ARG IMAGE_REPO="almalinux"
 ARG IMAGE_VERSION="8"
@@ -41,7 +40,7 @@ RUN set -ex ; \
   echo ""
 
 RUN set -ex ; \
-  echo ${PACK_LIST}
+  yum makecache && yum update -y && yum install -y ${PACK_LIST}
 
 RUN set -ex ; \
   touch "/etc/profile" "/root/.profile" ; \
@@ -76,7 +75,6 @@ ARG LICENSE
 ARG LANGUAGE
 ARG TIMEZONE
 ARG IMAGE_NAME
-ARG EXPOSE_PORTS
 
 USER ${USER}
 WORKDIR /root
@@ -107,9 +105,8 @@ ENV container="docker"
 ENV LANG="${LANGUAGE}"
 ENV TERM="xterm-256color"
 ENV CONTAINER_NAME="${IMAGE_NAME}"
-ENV HOSTNAME="casjaysdev-${IMAGE_NAME}"
+ENV HOSTNAME="${IMAGE_NAME}"
 ENV USER="${USER}"
-ENV ENV_PORTS="${EXPOSE_PORTS}"
 
 COPY --from=build /. /
 
