@@ -40,7 +40,7 @@ RUN set -ex ; \
   echo ""
 
 RUN set -ex ; \
-  yum makecache && yum update -y && yum install -y ${PACK_LIST}
+  yum makecache && yum update -y && yum install --allowerasing --skip-broken -y ${PACK_LIST}
 
 RUN set -ex ; \
   touch "/etc/profile" "/root/.profile" ; \
