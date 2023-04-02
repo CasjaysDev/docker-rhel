@@ -19,7 +19,7 @@ ARG LANGUAGE
 ARG TIMEZONE
 ARG IMAGE_NAME
 
-ARG PACK_LIST="bash bash-completion git curl wget sudo unzip iproute net-tools glibc-langpack-en"
+ARG PACK_LIST="bash bash-completion git curl wget sudo unzip iproute net-tools glibc-langpack-en pinentry nail"
 
 ENV ENV=~/.bashrc
 ENV SHELL="/bin/sh"
@@ -37,10 +37,10 @@ COPY ./rootfs/. /
 COPY ./Dockerfile /root/Dockerfile
 
 RUN set -ex ; \
-  echo ""
+  echo "yum clean all"
 
 RUN set -ex ; \
-  yum makecache && yum update -y && yum install --allowerasing --skip-broken -y ${PACK_LIST}
+  yum makecache && yum update -y --allowerasing --skip-broken --nobest && yum install --allowerasing --skip-broken --nobest -y ${PACK_LIST}
 
 RUN set -ex ; \
   touch "/etc/profile" "/root/.profile" ; \
@@ -54,7 +54,7 @@ RUN set -ex ; \
 
 RUN set -ex ; \
   echo 'Running cleanup' ; \
-  echo ""
+  echo "yum clean all"
 
 RUN rm -Rf "/config" "/data" ; \
   rm -rf /etc/systemd/system/*.wants/* ; \
