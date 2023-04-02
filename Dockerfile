@@ -19,7 +19,7 @@ ARG LANGUAGE
 ARG TIMEZONE
 ARG IMAGE_NAME
 
-ARG PACK_LIST="bash bash-completion git curl wget sudo unzip iproute net-tools"
+ARG PACK_LIST="bash bash-completion git curl wget sudo unzip iproute net-tools glibc-langpack-en"
 
 ENV ENV=~/.bashrc
 ENV SHELL="/bin/sh"
