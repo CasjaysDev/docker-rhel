@@ -1,12 +1,12 @@
 ## 👋 Welcome to rhel 🚀  
 
-rhel README  
 Custom rhel image based on almalinux with bash and tini installed  
+  
   
 ## Run container
 
 ```shell
-docker run casjaysdev/rhel bash
+docker run --name -casjaysdev-rhel casjaysdev/rhel bash
 ```
   
   
@@ -20,24 +20,23 @@ docker run casjaysdev/rhel bash
 ## Get source files  
 
 ```shell
-dockermgr download src rhel
+dockermgr download src casjaysdev/docker-rhel
 ```
 
 OR
 
 ```shell
-git clone "https://github.com/casjaysdevdocker/rhel" "$HOME/Projects/github/casjaysdevdocker/rhel"
+git clone "https://github.com/casjaysdev/docker-rhel" "$HOME/Projects/github/casjaysdev/docker-rhel"
 ```
 
 ## Build container  
 
 ```shell
-cd "$HOME/Projects/github/casjaysdevdocker/rhel"
+cd "$HOME/Projects/github/casjaysdev/docker-rhel"
 buildx 
 ```
 
 ## Authors  
 
-📽 dockermgr: [Github](https://github.com/dockermgr) [Docker](https://hub.docker.com/r/casjaysdevdocker) 📽  
-🤖 casjay: [Github](https://github.com/casjay) [Docker](https://hub.docker.com/r/casjay) 🤖  
-⛵ CasjaysDevDocker: [Github](https://github.com/casjaysdevdocker) [Docker](https://hub.docker.com/r/casjaysdevdocker) ⛵  
+🤖 casjay: [Github](https://github.com/casjay) 🤖  
+⛵ casjaysdev: [Github](https://github.com/casjaysdev) [Docker](https://hub.docker.com/r/casjaysdev) ⛵  
